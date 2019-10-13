@@ -20,22 +20,10 @@
         </activity>
         <activity
             android:name=".view.AdicionarActivity"
-            android:label="@string/titulo_activity_adicionar_conta">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
+            android:label="@string/titulo_activity_adicionar_conta" />
         <activity
             android:name=".view.ContaActivity"
-            android:label="@string/titulo_activity_conta">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
+            android:label="@string/titulo_activity_conta" />
     </application>
 
 </manifest>
