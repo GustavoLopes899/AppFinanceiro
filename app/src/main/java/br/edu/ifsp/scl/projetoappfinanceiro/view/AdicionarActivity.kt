@@ -27,8 +27,8 @@ class AdicionarActivity : AppCompatActivity() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
             R.id.salvar -> {
-                val nome: String = nomeTV.text.toString()
-                val descricao: String = descricaoTV.text.toString()
+                val nome: String = nome.text.toString()
+                val descricao: String = descricao.text.toString()
                 val saldoInicial: Double = saldoInicial.text.toString().toDouble()
                 val c = Conta()
                 c.nome = nome
