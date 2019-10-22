@@ -8,31 +8,60 @@
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="10dip">
+        android:padding="15dip">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="3dip"
             android:background="@drawable/borda"
-            android:orientation="horizontal"
-            android:weightSum="2"
-            android:layout_marginBottom="3dip">
+            android:orientation="vertical"
+            android:weightSum="2">
 
-            <TextView
-                android:id="@+id/nome_conta"
-                android:layout_width="0dp"
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:textAlignment="center"
-                android:textSize="30sp" />
+                android:weightSum="2">
 
-            <TextView
-                android:id="@+id/saldo_conta"
-                android:layout_width="0dp"
+                <TextView
+                    android:id="@+id/nome_conta"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:textAlignment="center"
+                    android:textSize="30sp" />
+
+                <TextView
+                    android:id="@+id/saldo_conta"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:textAlignment="gravity"
+                    android:textSize="20sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:textAlignment="gravity"
-                android:textSize="20sp" />
+                android:orientation="horizontal"
+                android:weightSum="2"
+                >
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="12sp"
+                    android:text="@string/descricao"
+                    android:layout_weight="0"
+                    android:layout_marginEnd="5dip"/>
+                <TextView
+                    android:layout_width="0dp"
+                    android:id="@+id/descricao_conta"
+                    android:layout_height="wrap_content"
+                    android:textSize="12sp"
+                    android:textAlignment="viewStart"
+                    android:layout_weight="2"/>
+            </LinearLayout>
+
         </LinearLayout>
 
     </androidx.cardview.widget.CardView>

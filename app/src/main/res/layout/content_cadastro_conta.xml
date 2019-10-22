@@ -19,7 +19,7 @@
             android:textSize="25sp" />
 
         <EditText
-            android:id="@+id/nome"
+            android:id="@+id/nomeET"
             android:labelFor="@+id/nomeTV"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -45,7 +45,7 @@
             android:textSize="25sp" />
 
         <EditText
-            android:id="@+id/descricao"
+            android:id="@+id/descricaoET"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="4"
@@ -71,7 +71,7 @@
             android:textSize="25sp" />
 
         <EditText
-            android:id="@+id/saldoInicial"
+            android:id="@+id/saldoET"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="4"

@@ -1,12 +1,12 @@
 package br.edu.ifsp.scl.projetoappfinanceiro.view
 
+import android.app.Activity
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -19,47 +19,27 @@ import kotlinx.android.synthetic.main.toolbar.*
 class ContaActivity : AppCompatActivity(), View.OnClickListener {
 
     private lateinit var recyclerView: RecyclerView
-    private lateinit var adapter: ContaAdapter
+    //private lateinit var adapter: ContaAdapter
     private lateinit var context: Context
+
+    companion object {
+        lateinit var adapter: ContaAdapter
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_conta)
         setSupportActionBar(toolbar)
+        context = this
 
         val database = ContaSQLite(this)
-        val contas = database.readContas()
+        ContaAdapter.contas = database.readContas()
 
         recyclerView = findViewById(R.id.recyclerView)
-        recyclerView.layoutManager = LinearLayoutManager(this, RecyclerView.VERTICAL, false)
-        adapter = ContaAdapter(contas)
+        recyclerView.layoutManager = LinearLayoutManager(context, RecyclerView.VERTICAL, false)
+        adapter = ContaAdapter()
+        adapter.notifyAdapter()
         recyclerView.adapter = adapter
-        recyclerView.addOnItemClickListener(object : OnItemClickListener {
-            override fun onItemClicked(position: Int, view: View) {
-                Toast.makeText(context, "clicked on " + contas[position].nome, Toast.LENGTH_SHORT)
-                    .show()
-            }
-        })
-    }
-
-    interface OnItemClickListener {
-        fun onItemClicked(position: Int, view: View)
-    }
-
-    private fun RecyclerView.addOnItemClickListener(onClickListener: OnItemClickListener) {
-        this.addOnChildAttachStateChangeListener(object :
-            RecyclerView.OnChildAttachStateChangeListener {
-            override fun onChildViewDetachedFromWindow(view: View) {
-                view.setOnClickListener(null)
-            }
-
-            override fun onChildViewAttachedToWindow(view: View) {
-                view.setOnClickListener {
-                    val holder = getChildViewHolder(view)
-                    onClickListener.onItemClicked(holder.adapterPosition, view)
-                }
-            }
-        })
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
@@ -68,13 +48,13 @@ class ContaActivity : AppCompatActivity(), View.OnClickListener {
     }
 
     override fun onClick(v: View?) {
-        // Fazer aqui
+        // TODO
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
             R.id.adicionar -> {
-                val adicionarIntent = Intent(this, AdicionarActivity::class.java)
+                val adicionarIntent = Intent(this, NovaContaActivity::class.java)
                 startActivityForResult(adicionarIntent, REQUEST_CODE_ADICIONAR_CONTA)
             }
             R.id.voltaContas -> {
@@ -82,6 +62,15 @@ class ContaActivity : AppCompatActivity(), View.OnClickListener {
             }
         }
         return super.onOptionsItemSelected(item)
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        if (requestCode == REQUEST_CODE_ADICIONAR_CONTA) {
+            if (resultCode == Activity.RESULT_OK) {
+                adapter.notifyAdapter()
+            }
+        }
     }
 
 }

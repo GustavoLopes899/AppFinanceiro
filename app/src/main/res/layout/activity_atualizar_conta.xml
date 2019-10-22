@@ -13,6 +13,6 @@
         <include layout="@layout/toolbar" />
     </com.google.android.material.appbar.AppBarLayout>
 
-    <include layout="@layout/content_adicionar_conta" />
+    <include layout="@layout/content_cadastro_conta" />
 
 </LinearLayout>
