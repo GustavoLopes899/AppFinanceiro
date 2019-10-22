@@ -11,20 +11,45 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".view.TransacoesActivity"></activity>
         <activity android:name=".view.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
         <activity
-            android:name=".view.AdicionarActivity"
-            android:label="@string/titulo_activity_adicionar_conta" />
+            android:name=".view.AtualizarContaActivity"
+            android:label="@string/editar_conta">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name=".view.NovaContaActivity"
+            android:label="@string/titulo_activity_adicionar_conta">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+            </intent-filter>
+        </activity>
+
         <activity
             android:name=".view.ContaActivity"
-            android:label="@string/titulo_activity_conta" />
+            android:label="@string/titulo_activity_conta">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name=".view.TransacoesActivity"
+            android:label="@string/transacoes">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+            </intent-filter>
+        </activity>
+
     </application>
 
 </manifest>

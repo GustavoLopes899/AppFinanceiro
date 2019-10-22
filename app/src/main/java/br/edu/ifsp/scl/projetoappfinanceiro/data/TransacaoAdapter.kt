@@ -8,7 +8,6 @@ import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import br.edu.ifsp.scl.projetoappfinanceiro.R
 import br.edu.ifsp.scl.projetoappfinanceiro.model.Transacao
-import kotlinx.android.synthetic.main.transacao_celula.view.*
 
 class TransacaoAdapter(val transacoes: MutableList<Transacao>): RecyclerView.Adapter<TransacaoAdapter.ItemViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ItemViewHolder {

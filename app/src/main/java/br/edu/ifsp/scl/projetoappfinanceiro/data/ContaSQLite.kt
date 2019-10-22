@@ -11,7 +11,7 @@ import br.edu.ifsp.scl.projetoappfinanceiro.R
 import br.edu.ifsp.scl.projetoappfinanceiro.data.ConstantesConta.ATRIBUTO_CODIGO
 import br.edu.ifsp.scl.projetoappfinanceiro.data.ConstantesConta.ATRIBUTO_DESCRICAO
 import br.edu.ifsp.scl.projetoappfinanceiro.data.ConstantesConta.ATRIBUTO_NOME
-import br.edu.ifsp.scl.projetoappfinanceiro.data.ConstantesConta.ATRIBUTO_SALDO_INICIAL
+import br.edu.ifsp.scl.projetoappfinanceiro.data.ConstantesConta.ATRIBUTO_SALDO
 import br.edu.ifsp.scl.projetoappfinanceiro.data.ConstantesConta.TABELA_CONTA
 import br.edu.ifsp.scl.projetoappfinanceiro.model.Conta
 
@@ -35,7 +35,7 @@ class ContaSQLite(contexto: Context) : ContaDao {
         val atributos = ContentValues()
         atributos.put(ATRIBUTO_NOME, conta.nome)
         atributos.put(ATRIBUTO_DESCRICAO, conta.descricao)
-        atributos.put(ATRIBUTO_SALDO_INICIAL, conta.saldoInicial)
+        atributos.put(ATRIBUTO_SALDO, conta.saldo)
 
         // Executando insert
         sqlDb.insert(TABELA_CONTA, null, atributos)
@@ -69,12 +69,12 @@ class ContaSQLite(contexto: Context) : ContaDao {
             ),
             cursor.getString(cursor.getColumnIndex(ATRIBUTO_NOME)),
             cursor.getString(cursor.getColumnIndex(ATRIBUTO_DESCRICAO)),
-            cursor.getDouble(cursor.getColumnIndex(ATRIBUTO_SALDO_INICIAL))
+            cursor.getDouble(cursor.getColumnIndex(ATRIBUTO_SALDO))
         )
     }
 
-    override fun readContas(): MutableList<Conta> {
-        val listaContas = mutableListOf<Conta>()
+    override fun readContas(): ArrayList<Conta> {
+        val listaContas = arrayListOf<Conta>()
         // Consulta usando função rawQuery
         val disciplinasStm = "SELECT * FROM $TABELA_CONTA;"
         val disciplinasCursor = sqlDb.rawQuery(disciplinasStm, null)
@@ -88,7 +88,7 @@ class ContaSQLite(contexto: Context) : ContaDao {
         val atributos = ContentValues()
         atributos.put(ATRIBUTO_NOME, conta.nome)
         atributos.put(ATRIBUTO_DESCRICAO, conta.descricao)
-        atributos.put(ATRIBUTO_SALDO_INICIAL, conta.saldoInicial)
+        atributos.put(ATRIBUTO_SALDO, conta.saldo)
         // Executando update
         sqlDb.update(
             TABELA_CONTA,                       // Tabela

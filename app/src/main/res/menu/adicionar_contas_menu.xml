@@ -9,7 +9,7 @@
         app:showAsAction="ifRoom" />
     <item
         android:id="@+id/voltar"
-        android:icon="@android:drawable/ic_menu_close_clear_cancel"
+        android:icon="@android:drawable/ic_menu_revert"
         android:orderInCategory="1"
         android:title="@string/voltar"
         app:showAsAction="ifRoom" />
