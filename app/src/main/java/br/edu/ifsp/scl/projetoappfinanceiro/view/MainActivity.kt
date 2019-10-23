@@ -1,6 +1,7 @@
 package br.edu.ifsp.scl.projetoappfinanceiro.view
 
 import android.content.Intent
+import android.graphics.Color
 import android.os.Bundle
 import android.view.View
 import android.widget.TextView
@@ -8,12 +9,19 @@ import androidx.appcompat.app.AppCompatActivity
 import br.edu.ifsp.scl.projetoappfinanceiro.R
 import br.edu.ifsp.scl.projetoappfinanceiro.data.ContaSQLite
 import br.edu.ifsp.scl.projetoappfinanceiro.model.Conta
+import com.github.mikephil.charting.charts.PieChart
+import com.github.mikephil.charting.data.PieData
+import com.github.mikephil.charting.data.PieDataSet
+import com.github.mikephil.charting.data.PieEntry
+import com.github.mikephil.charting.utils.ColorTemplate
 import kotlinx.android.synthetic.main.toolbar.*
+import javax.xml.transform.Templates
 
 class MainActivity : AppCompatActivity(), View.OnClickListener {
     private lateinit var dao: ContaSQLite
     lateinit var contas: MutableList<Conta>
     private lateinit var total: TextView
+    private lateinit var pieChart: PieChart
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -21,6 +29,17 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         setSupportActionBar(toolbar)
         dao = ContaSQLite(this)
         total = findViewById(R.id.saldoTotalTv)
+
+        // Carrega dados do grafico
+        pieChart = findViewById(R.id.saldosPieChart)
+        // Pie Chart valored de configuracao
+        pieChart.description.isEnabled = false
+        pieChart.setExtraOffsets(5f, 10f, 5f, 5f)
+        pieChart.dragDecelerationFrictionCoef = 0.95f
+        pieChart.isDrawHoleEnabled = true
+        pieChart.setHoleColor(Color.WHITE)
+        pieChart.transparentCircleRadius = 61f
+        pieChart.centerText = "Saldos"
     }
 
     override fun onResume() {
@@ -28,6 +47,24 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         // Atualiza main activity quando retorna a ela de qualquer outra activity
         contas = dao.readContas()
         total.setText("Saldo Total: " + contas.sumByDouble { it.saldo }.toString())
+
+        // Adiciona valores de saldo de contas
+        var values: MutableList<PieEntry> = mutableListOf()
+        contas.forEach {
+            values.add(PieEntry(it.saldo.toFloat(), it.nome))
+        }
+        var pieDataSet: PieDataSet = PieDataSet(values, "Saldos")
+
+        // Config pie data layout
+        pieDataSet.sliceSpace = 3f
+        pieDataSet.selectionShift = 5f
+
+        // Add pie data
+        var pieData: PieData = PieData(pieDataSet)
+        pieData.setValueTextSize(10f)
+        pieData.setValueTextColor(Color.YELLOW)
+        // Add data to chart
+        pieChart.data = pieData
     }
 
     override fun onClick(view: View) {

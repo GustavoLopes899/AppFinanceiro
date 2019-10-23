@@ -24,7 +24,7 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@id/appBarLayout"
-        app:layout_constraintBottom_toTopOf="@+id/verContasbtn">
+        app:layout_constraintBottom_toTopOf="@+id/saldosPieChart">
         <TextView
             android:id="@+id/saldoTotalTv"
             android:layout_width="match_parent"
@@ -32,6 +32,16 @@
             android:text="Saldo Total: 0.00"
             android:textSize="30sp"/>
     </androidx.cardview.widget.CardView>
+
+    <com.github.mikephil.charting.charts.PieChart
+        android:id="@+id/saldosPieChart"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintDimensionRatio="1"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/mainPainel"
+        app:layout_constraintBottom_toTopOf="@+id/verContasbtn"/>
 
     <Button
         android:id="@+id/verContasbtn"
@@ -42,7 +52,7 @@
         android:textSize="20sp"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/mainPainel"
+        app:layout_constraintTop_toBottomOf="@+id/saldosPieChart"
         app:layout_constraintBottom_toTopOf="@+id/verTransacoesbtn"/>
 
     <Button
@@ -55,8 +65,6 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/verContasbtn" />
-
-
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
