@@ -6,9 +6,32 @@
     android:layout_height="match_parent"
     tools:context=".view.MainActivity">
 
-    <include
-        android:id="@+id/include"
-        layout="@layout/toolbar" />
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/appBarLayout"
+        android:layout_width="match_parent"
+        android:layout_height="?actionBarSize"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <include layout="@layout/toolbar" />
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/mainPainel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/appBarLayout"
+        app:layout_constraintBottom_toTopOf="@+id/verContasbtn">
+        <TextView
+            android:id="@+id/saldoTotalTv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Saldo Total: 0.00"
+            android:textSize="30sp"/>
+    </androidx.cardview.widget.CardView>
 
     <Button
         android:id="@+id/verContasbtn"
@@ -19,7 +42,21 @@
         android:textSize="20sp"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/include" />
+        app:layout_constraintTop_toBottomOf="@+id/mainPainel"
+        app:layout_constraintBottom_toTopOf="@+id/verTransacoesbtn"/>
+
+    <Button
+        android:id="@+id/verTransacoesbtn"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:onClick="onClick"
+        android:text="Creditos/Debitos"
+        android:textSize="20sp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/verContasbtn" />
+
+
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
