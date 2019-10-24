@@ -27,6 +27,7 @@
     <string name="por_natureza">Por Natureza:</string>
     <string name="gerar_relatorio">Gerar Relatório</string>
     <string name="por_tipo">Por Tipo:</string>
+    <string name="grafico">Grafico</string>
     <string-array name="natureza">
         <item>Alimentação</item>
         <item>Saúde</item>
@@ -40,5 +41,10 @@
     <string-array name="tipo">
         <item>Crédito</item>
         <item>Débito</item>
+    </string-array>
+    <string-array name="tipoGafico">
+        <item>Contas</item>
+        <item>Crédito/Débito</item>
+        <item>Tipo de Transacao</item>
     </string-array>
 </resources>

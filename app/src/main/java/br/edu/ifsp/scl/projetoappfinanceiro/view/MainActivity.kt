@@ -8,6 +8,7 @@ import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import br.edu.ifsp.scl.projetoappfinanceiro.R
 import br.edu.ifsp.scl.projetoappfinanceiro.data.ContaSQLite
+import br.edu.ifsp.scl.projetoappfinanceiro.data.TransacaoSQLite
 import br.edu.ifsp.scl.projetoappfinanceiro.model.Conta
 import com.github.mikephil.charting.charts.PieChart
 import com.github.mikephil.charting.data.PieData
@@ -32,8 +33,9 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
 
         // Carrega dados do grafico
         pieChart = findViewById(R.id.saldosPieChart)
-        // Pie Chart valored de configuracao
+        // Pie Chart valores de configuracao
         pieChart.description.isEnabled = false
+        pieChart.legend.isEnabled = false
         pieChart.setExtraOffsets(5f, 10f, 5f, 5f)
         pieChart.dragDecelerationFrictionCoef = 0.95f
         pieChart.isDrawHoleEnabled = true
@@ -76,6 +78,10 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
             R.id.verTransacoesbtn -> {
                 // Botao inicia activity de transacoes
                 startActivity(Intent(this, TransacaoActivity::class.java))
+            }
+            R.id.verRelatorios -> {
+                // Botao inicia activity de Extratos
+                startActivity(Intent(this, RelatorioActivity::class.java))
             }
         }
     }

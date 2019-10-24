@@ -21,10 +21,9 @@
         android:id="@+id/mainPainel"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@id/appBarLayout"
-        app:layout_constraintBottom_toTopOf="@+id/saldosPieChart">
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent">
         <TextView
             android:id="@+id/saldoTotalTv"
             android:layout_width="match_parent"
@@ -35,36 +34,77 @@
 
     <com.github.mikephil.charting.charts.PieChart
         android:id="@+id/saldosPieChart"
-        android:layout_width="0dp"
+        android:layout_width="match_parent"
         android:layout_height="0dp"
         app:layout_constraintDimensionRatio="1"
+        app:layout_constraintTop_toBottomOf="@+id/mainPainel"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/mainPainel"
-        app:layout_constraintBottom_toTopOf="@+id/verContasbtn"/>
+        app:layout_constraintBottom_toTopOf="@+id/tipoPieChart"/>
+
+    <LinearLayout
+        android:id="@+id/tipoPieChart"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintTop_toBottomOf="@+id/saldosPieChart"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/verContasbtn">
+
+        <TextView
+            android:id="@+id/tipoGaficoTV"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_weight="3"
+            android:text="@string/grafico"
+            android:textAlignment="center"
+            android:textSize="25sp" />
+
+        <Spinner
+            android:id="@+id/spinnerTipo"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:layout_weight="4"
+            android:entries="@array/tipoGafico" />
+    </LinearLayout>
 
     <Button
         android:id="@+id/verContasbtn"
         android:layout_width="match_parent"
-        android:layout_height="100dp"
+        android:layout_height="0dp"
         android:onClick="onClick"
         android:text="Minhas Contas"
         android:textSize="20sp"
+        app:layout_constraintTop_toBottomOf="@+id/tipoPieChart"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/saldosPieChart"
         app:layout_constraintBottom_toTopOf="@+id/verTransacoesbtn"/>
 
     <Button
         android:id="@+id/verTransacoesbtn"
         android:layout_width="match_parent"
-        android:layout_height="100dp"
+        android:layout_height="0dp"
         android:onClick="onClick"
         android:text="Creditos/Debitos"
         android:textSize="20sp"
+        app:layout_constraintTop_toBottomOf="@+id/verContasbtn"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/verContasbtn" />
+        app:layout_constraintBottom_toTopOf="@id/verRelatorios"/>
 
+    <Button
+        android:id="@+id/verRelatorios"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:onClick="onClick"
+        android:text="Extratos"
+        android:textSize="20sp"
+        app:layout_constraintTop_toBottomOf="@+id/verTransacoesbtn"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
