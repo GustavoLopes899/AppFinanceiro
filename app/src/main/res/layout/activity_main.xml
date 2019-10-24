@@ -40,36 +40,7 @@
         app:layout_constraintTop_toBottomOf="@+id/mainPainel"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintBottom_toTopOf="@+id/tipoPieChart"/>
-
-    <LinearLayout
-        android:id="@+id/tipoPieChart"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintTop_toBottomOf="@+id/saldosPieChart"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintBottom_toTopOf="@+id/verContasbtn">
-
-        <TextView
-            android:id="@+id/tipoGaficoTV"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_weight="3"
-            android:text="@string/grafico"
-            android:textAlignment="center"
-            android:textSize="25sp" />
-
-        <Spinner
-            android:id="@+id/spinnerTipo"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_gravity="center"
-            android:layout_weight="4"
-            android:entries="@array/tipoGafico" />
-    </LinearLayout>
+        app:layout_constraintBottom_toTopOf="@+id/verContasbtn"/>
 
     <Button
         android:id="@+id/verContasbtn"
@@ -78,7 +49,7 @@
         android:onClick="onClick"
         android:text="Minhas Contas"
         android:textSize="20sp"
-        app:layout_constraintTop_toBottomOf="@+id/tipoPieChart"
+        app:layout_constraintTop_toBottomOf="@+id/saldosPieChart"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintBottom_toTopOf="@+id/verTransacoesbtn"/>

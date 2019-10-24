@@ -8,7 +8,6 @@ import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import br.edu.ifsp.scl.projetoappfinanceiro.R
 import br.edu.ifsp.scl.projetoappfinanceiro.data.ContaSQLite
-import br.edu.ifsp.scl.projetoappfinanceiro.data.TransacaoSQLite
 import br.edu.ifsp.scl.projetoappfinanceiro.model.Conta
 import com.github.mikephil.charting.charts.PieChart
 import com.github.mikephil.charting.data.PieData
@@ -16,7 +15,6 @@ import com.github.mikephil.charting.data.PieDataSet
 import com.github.mikephil.charting.data.PieEntry
 import com.github.mikephil.charting.utils.ColorTemplate
 import kotlinx.android.synthetic.main.toolbar.*
-import javax.xml.transform.Templates
 
 class MainActivity : AppCompatActivity(), View.OnClickListener {
     private lateinit var dao: ContaSQLite
@@ -60,11 +58,11 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         // Config pie data layout
         pieDataSet.sliceSpace = 3f
         pieDataSet.selectionShift = 5f
+        pieDataSet.setColors(ColorTemplate.MATERIAL_COLORS.toMutableList())
 
         // Add pie data
         var pieData: PieData = PieData(pieDataSet)
         pieData.setValueTextSize(10f)
-        pieData.setValueTextColor(Color.YELLOW)
         // Add data to chart
         pieChart.data = pieData
     }
