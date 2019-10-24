@@ -1,7 +1,7 @@
 package br.edu.ifsp.scl.projetoappfinanceiro.data
 
 object Constantes {
-    const val APP_DB = "app_financeiro"
+    const val APP_DB = "app_financeiro.db"
     const val REQUEST_CODE_ADICIONAR_CONTA = 0
     const val REQUEST_CODE_ADICIONAR_TRANSACAO = 1
 }
