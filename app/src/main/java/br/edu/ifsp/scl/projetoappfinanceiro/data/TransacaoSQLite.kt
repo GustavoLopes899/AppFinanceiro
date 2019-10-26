@@ -18,11 +18,10 @@ import br.edu.ifsp.scl.projetoappfinanceiro.data.ConstantesTransacoes.ATRIBUTO_V
 import br.edu.ifsp.scl.projetoappfinanceiro.data.ConstantesTransacoes.TABELA_TRANSACAO
 import br.edu.ifsp.scl.projetoappfinanceiro.model.Transacao
 
-class TransacaoSQLite(private val contexto: Context): TransacaoDao {
+class TransacaoSQLite(contexto: Context): TransacaoDao {
     // Referência para o Banco de Dados do aplicativo
     private val sqlDb: SQLiteDatabase = contexto.openOrCreateDatabase(Constantes.APP_DB, Context.MODE_PRIVATE, null)
 
-    // Construtor cria ou abre database
     init {
         try {
             sqlDb.execSQL(ConstantesTransacoes.CREATE_TABLE_TRANSACAO)
@@ -34,7 +33,6 @@ class TransacaoSQLite(private val contexto: Context): TransacaoDao {
         }
     }
 
-
     override fun createTransacao(transacao: Transacao) {
         val atributos = ContentValues()
         // Adicionando atributos de transacoes
@@ -42,7 +40,7 @@ class TransacaoSQLite(private val contexto: Context): TransacaoDao {
         atributos.put(ATRIBUTO_DESCRICAO, transacao.descricao)
         atributos.put(ATRIBUTO_NATUREZA, transacao.natureza)
         atributos.put(ATRIBUTO_TIPO, transacao.tipo)
-        atributos.put(ATRIBUTO_CODIGO_CONTA, transacao.conta.codigo)
+        atributos.put(ATRIBUTO_CODIGO_CONTA, transacao.conta)
         atributos.put(ATRIBUTO_DATA, transacao.data)
         atributos.put(ATRIBUTO_PERIODOS, transacao.periodos)
 
@@ -79,15 +77,15 @@ class TransacaoSQLite(private val contexto: Context): TransacaoDao {
             cursor.getString(cursor.getColumnIndex(ATRIBUTO_DESCRICAO)),
             cursor.getString(cursor.getColumnIndex(ATRIBUTO_NATUREZA)),
             cursor.getString(cursor.getColumnIndex(ATRIBUTO_TIPO)),
-            ContaSQLite(contexto).readConta(cursor.getColumnIndex(ATRIBUTO_CODIGO_CONTA)),
+            cursor.getInt(cursor.getColumnIndex(ATRIBUTO_CODIGO_CONTA)),
             cursor.getString(cursor.getColumnIndex(ATRIBUTO_DATA)),
             cursor.getString(cursor.getColumnIndex(ATRIBUTO_PERIODOS))
         )
     }
 
     // Retorna todas transacoes
-    override fun readTransacoes(): MutableList<Transacao> {
-        val listaTransacao = mutableListOf<Transacao>()
+    override fun readTransacoes(): ArrayList<Transacao> {
+        val listaTransacao = arrayListOf<Transacao>()
         // Consulta usando função rawQuery
         val transacaoStm = "SELECT * FROM $TABELA_TRANSACAO;"
         val transacaoCursor = sqlDb.rawQuery(transacaoStm, null)
@@ -105,7 +103,7 @@ class TransacaoSQLite(private val contexto: Context): TransacaoDao {
         atributos.put(ATRIBUTO_DESCRICAO, transacao.descricao)
         atributos.put(ATRIBUTO_NATUREZA, transacao.natureza)
         atributos.put(ATRIBUTO_TIPO, transacao.tipo)
-        atributos.put(ATRIBUTO_CODIGO_CONTA, transacao.conta.codigo)
+        atributos.put(ATRIBUTO_CODIGO_CONTA, transacao.conta)
         atributos.put(ATRIBUTO_DATA, transacao.data)
         atributos.put(ATRIBUTO_PERIODOS, transacao.periodos)
 

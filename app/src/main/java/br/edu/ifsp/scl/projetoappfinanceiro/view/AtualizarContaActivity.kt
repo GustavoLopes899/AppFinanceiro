@@ -16,9 +16,9 @@ import kotlinx.android.synthetic.main.toolbar.*
 class AtualizarContaActivity : AppCompatActivity() {
 
     private lateinit var dao: ContaSQLite
-    lateinit var conta: Conta
+    private lateinit var conta: Conta
     private lateinit var nome: EditText
-    lateinit var descricao: EditText
+    private lateinit var descricao: EditText
     private lateinit var saldo: EditText
     private var codigo: Int = 0
 
@@ -40,7 +40,7 @@ class AtualizarContaActivity : AppCompatActivity() {
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
-        menuInflater.inflate(R.menu.atualizar_contas_menu, menu)
+        menuInflater.inflate(R.menu.atualizar_menu, menu)
         return super.onCreateOptionsMenu(menu)
     }
 

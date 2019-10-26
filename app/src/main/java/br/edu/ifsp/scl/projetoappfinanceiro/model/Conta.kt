@@ -23,4 +23,8 @@ data class Conta(
         result = 31 * result + saldo.hashCode()
         return result
     }
+
+    override fun toString(): String {
+        return nome
+    }
 }
