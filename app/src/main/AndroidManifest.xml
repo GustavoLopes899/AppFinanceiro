@@ -11,13 +11,14 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
+
         <activity android:name=".view.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
         <activity
             android:name=".view.AtualizarContaActivity"
             android:label="@string/editar_conta">
@@ -25,7 +26,6 @@
                 <action android:name="android.intent.action.MAIN" />
             </intent-filter>
         </activity>
-
         <activity
             android:name=".view.NovaContaActivity"
             android:label="@string/titulo_activity_adicionar_conta">
@@ -33,7 +33,6 @@
                 <action android:name="android.intent.action.MAIN" />
             </intent-filter>
         </activity>
-
         <activity
             android:name=".view.ContaActivity"
             android:label="@string/titulo_activity_conta">
@@ -41,15 +40,27 @@
                 <action android:name="android.intent.action.MAIN" />
             </intent-filter>
         </activity>
-
         <activity
-            android:name=".view.TransacoesActivity"
+            android:name=".view.TransacaoActivity"
             android:label="@string/transacoes">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
             </intent-filter>
         </activity>
-
+        <activity
+            android:name=".view.AtualizarTransacaoActivity"
+            android:label="@string/transacoes">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".view.NovaTransacaoActivity"
+            android:label="@string/transacoes">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+            </intent-filter>
+        </activity>
     </application>
 
 </manifest>

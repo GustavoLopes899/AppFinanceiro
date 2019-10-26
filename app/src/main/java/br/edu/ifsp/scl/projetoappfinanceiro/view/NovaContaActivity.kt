@@ -21,7 +21,7 @@ class NovaContaActivity : AppCompatActivity() {
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
-        menuInflater.inflate(R.menu.adicionar_contas_menu, menu)
+        menuInflater.inflate(R.menu.adicionar_menu, menu)
         return super.onCreateOptionsMenu(menu)
     }
 
@@ -41,7 +41,6 @@ class NovaContaActivity : AppCompatActivity() {
                 ContaAdapter.contas.add(c)
                 ContaActivity.adapter.notifyAdapter()
 
-
                 Toast.makeText(this, "Conta salva com sucesso!", Toast.LENGTH_SHORT).show()
                 setResult(RESULT_OK)
                 finish()
@@ -52,7 +51,4 @@ class NovaContaActivity : AppCompatActivity() {
         }
         return super.onOptionsItemSelected(item)
     }
-
-
-    //
 }
