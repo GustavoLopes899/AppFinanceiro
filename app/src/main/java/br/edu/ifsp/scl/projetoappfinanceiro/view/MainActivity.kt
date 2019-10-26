@@ -75,7 +75,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
             }
             R.id.verTransacoesbtn -> {
                 // Botao inicia activity de transacoes
-                startActivity(Intent(this, TransacoesActivity::class.java))
+                startActivity(Intent(this, TransacaoActivity::class.java))
             }
         }
     }
