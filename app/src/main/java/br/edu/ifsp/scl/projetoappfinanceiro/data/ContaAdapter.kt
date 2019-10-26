@@ -46,13 +46,10 @@ class ContaAdapter :
             saldo.text = "R$" + String.format("%.2f", conta.saldo)
 
             itemView.setOnClickListener {
-                //Toast.makeText(itemView.context, "Conta: " + nome.text + "\nDescrição: " + descricao.text + "\nSaldo: R$" + saldo.text, Toast.LENGTH_SHORT).show()
-                var activity = AtualizarContaActivity()
                 val atualizarIntent =
                     Intent(itemView.context, AtualizarContaActivity::class.java).apply {
                         putExtra("conta", conta)
                     }
-                //activity.startActivityForResult(atualizarIntent, 1, Bundle())
                 itemView.context.startActivity(atualizarIntent)
             }
         }
