@@ -39,6 +39,6 @@ object ConstantesTransacoes {
             "$ATRIBUTO_CODIGO_CONTA INTEGER NOT NULL, " +
             "$ATRIBUTO_DATA TEXT NOT NULL, " +
             "$ATRIBUTO_PERIODOS TEXT, " +
-            "FOREIGN KEY($ATRIBUTO_CODIGO_CONTA) REFERENCES ${ConstantesConta.TABELA_CONTA}(${ConstantesConta.ATRIBUTO_CODIGO}));"
+            "FOREIGN KEY($ATRIBUTO_CODIGO_CONTA) REFERENCES ${ConstantesConta.TABELA_CONTA}(${ConstantesConta.ATRIBUTO_CODIGO}) ON DELETE CASCADE);"
 
 }

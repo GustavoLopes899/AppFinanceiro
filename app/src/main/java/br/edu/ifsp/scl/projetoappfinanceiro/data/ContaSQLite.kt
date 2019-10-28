@@ -22,6 +22,7 @@ class ContaSQLite(contexto: Context) : ContaDao {
 
     init {
         try {
+            sqlDb.execSQL("PRAGMA foreign_keys=ON")
             sqlDb.execSQL(ConstantesConta.CREATE_TABLE_CONTA)
         } catch (e: SQLException) {
             Log.e(

@@ -84,10 +84,14 @@ class TransacaoSQLite(contexto: Context): TransacaoDao {
     }
 
     // Retorna todas transacoes
-    override fun readTransacoes(): ArrayList<Transacao> {
+    override fun readTransacoes(where: String): ArrayList<Transacao> {
         val listaTransacao = arrayListOf<Transacao>()
         // Consulta usando função rawQuery
-        val transacaoStm = "SELECT * FROM $TABELA_TRANSACAO;"
+        val transacaoStm: String = if (where == "") {
+            "SELECT * FROM $TABELA_TRANSACAO;"
+        } else {
+            "SELECT * FROM $TABELA_TRANSACAO WHERE $where"
+        }
         val transacaoCursor = sqlDb.rawQuery(transacaoStm, null)
         while (transacaoCursor.moveToNext()) {
             listaTransacao.add(linhaCursorParaTransacao(transacaoCursor))

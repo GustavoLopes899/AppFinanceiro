@@ -1,8 +1,10 @@
 package br.edu.ifsp.scl.projetoappfinanceiro.view
 
+import android.app.DatePickerDialog
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
+import android.view.View
 import android.widget.ArrayAdapter
 import android.widget.EditText
 import android.widget.Spinner
@@ -16,6 +18,8 @@ import br.edu.ifsp.scl.projetoappfinanceiro.model.Conta
 import br.edu.ifsp.scl.projetoappfinanceiro.model.Transacao
 import kotlinx.android.synthetic.main.content_cadastro_transacao.*
 import kotlinx.android.synthetic.main.toolbar.*
+import java.text.SimpleDateFormat
+import java.util.*
 import kotlin.collections.ArrayList
 
 class AtualizarTransacaoActivity : AppCompatActivity() {
@@ -30,6 +34,7 @@ class AtualizarTransacaoActivity : AppCompatActivity() {
     private lateinit var conta: Spinner
     private lateinit var data: EditText
     private lateinit var periodo: EditText
+    private lateinit var dataTransacao: Date
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -113,4 +118,33 @@ class AtualizarTransacaoActivity : AppCompatActivity() {
         }
         return super.onOptionsItemSelected(item)
     }
+
+    fun verificarDataTransacao(view: View) {
+        val editText: EditText = (view as EditText)
+        val calendar = Calendar.getInstance()
+        var data: String = editText.text.toString()
+        dataTransacao = SimpleDateFormat("dd/MM/yyyy", Locale.US).parse(data)
+        calendar.time = dataTransacao
+        val dia: Int = calendar.get(Calendar.DAY_OF_MONTH)
+        val mes: Int = calendar.get(Calendar.MONTH)
+        val ano: Int = calendar.get(Calendar.YEAR)
+        //val dia: Int = calendar.get((Calendar.DAY_OF_MONTH))
+
+        val dataPicker = DatePickerDialog(this, DatePickerDialog.OnDateSetListener { _, year, monthOfYear, dayOfMonth ->
+            data = if (dayOfMonth < 9) {
+                String.format("0%d/", dayOfMonth)
+            } else {
+                String.format("%d/", dayOfMonth)
+            }
+            data += if (monthOfYear < 9) {
+                (String.format("0%d/", monthOfYear+1))
+            } else {
+                (String.format("%d/", monthOfYear + 1))
+            }
+            data += year
+            editText.setText(data)
+        }, ano, mes, dia)
+        dataPicker.show()
+    }
+
 }
