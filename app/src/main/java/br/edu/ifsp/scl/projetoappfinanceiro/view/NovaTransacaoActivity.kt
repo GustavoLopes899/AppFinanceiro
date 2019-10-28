@@ -24,13 +24,14 @@ class NovaTransacaoActivity : AppCompatActivity() {
 
     private lateinit var contas: ArrayList<Conta>
     private lateinit var dataTransacao: Date
+    private lateinit var daoConta: ContaSQLite
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_nova_transacao)
         setSupportActionBar(toolbar)
 
-        val daoConta = ContaSQLite(this)
+        daoConta = ContaSQLite(this)
         contas = daoConta.readContas()
 
         val spinner = spinnerConta
@@ -65,6 +66,11 @@ class NovaTransacaoActivity : AppCompatActivity() {
                 for (c in contas) {
                     if (c.nome == nomeConta) {
                         conta = c.codigo
+                        when (tipo) {
+                            "Débito" -> c.saldo -= valor
+                            "Crédito" -> c.saldo += valor
+                        }
+                        daoConta.updateConta(c)
                         break
                     }
                 }
