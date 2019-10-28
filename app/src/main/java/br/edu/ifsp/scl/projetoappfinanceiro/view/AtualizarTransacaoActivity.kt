@@ -75,12 +75,20 @@ class AtualizarTransacaoActivity : AppCompatActivity() {
         when (item.itemId) {
             R.id.salvar -> {
                 // TODO -> Verificar possiveis alterações nos valores //
+                if (valorTransacaoET.text.toString() == "") {
+                    Toast.makeText(this, "O valor da transação não pode estar vazio", Toast.LENGTH_SHORT).show()
+                    return false
+                }
                 val valor: Double = valorTransacaoET.text.toString().toDouble()
                 val descricao: String = descricaoTransacaoET.text.toString()
                 val natureza: String = spinnerNatureza.selectedItem.toString()
                 val tipo: String = spinnerTipo.selectedItem.toString()
                 val nomeConta: String = spinnerConta.selectedItem.toString()
                 val data: String = dataTransacaoET.text.toString()
+                if (data == "") {
+                    Toast.makeText(this, "A data da transação não pode estar vazio", Toast.LENGTH_SHORT).show()
+                    return false
+                }
                 val periodo: String = periodoTransacaoET.text.toString()
 
                 val t = Transacao()

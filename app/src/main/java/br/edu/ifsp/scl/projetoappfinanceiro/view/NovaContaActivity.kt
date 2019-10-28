@@ -29,7 +29,15 @@ class NovaContaActivity : AppCompatActivity() {
         when (item.itemId) {
             R.id.salvar -> {
                 val nome: String = nomeET.text.toString()
+                if (nome.trim() == "") {
+                    Toast.makeText(this, "O nome da conta não pode estar vazio", Toast.LENGTH_SHORT).show()
+                    return false
+                }
                 val descricao: String = descricaoET.text.toString()
+                if (saldoET.text.toString() == "") {
+                    Toast.makeText(this, "O saldo inicial da conta não pode estar vazio", Toast.LENGTH_SHORT).show()
+                    return false
+                }
                 val saldoInicial: Double = saldoET.text.toString().toDouble()
                 val c = Conta()
                 c.nome = nome
