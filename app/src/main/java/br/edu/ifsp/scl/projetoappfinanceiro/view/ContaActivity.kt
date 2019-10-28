@@ -16,7 +16,7 @@ import br.edu.ifsp.scl.projetoappfinanceiro.data.ContaAdapter
 import br.edu.ifsp.scl.projetoappfinanceiro.data.ContaSQLite
 import kotlinx.android.synthetic.main.toolbar.*
 
-class ContaActivity : AppCompatActivity(), View.OnClickListener {
+class ContaActivity : AppCompatActivity() {
 
     private lateinit var recyclerView: RecyclerView
     private lateinit var context: Context
@@ -46,10 +46,6 @@ class ContaActivity : AppCompatActivity(), View.OnClickListener {
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         menuInflater.inflate(R.menu.itens_menu, menu)
         return super.onCreateOptionsMenu(menu)
-    }
-
-    override fun onClick(v: View?) {
-        // TODO
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
