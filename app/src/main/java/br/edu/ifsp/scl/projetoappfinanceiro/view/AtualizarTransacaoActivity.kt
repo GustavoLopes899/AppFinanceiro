@@ -26,6 +26,7 @@ class AtualizarTransacaoActivity : AppCompatActivity() {
 
     private lateinit var contas: ArrayList<Conta>
     private lateinit var dao: TransacaoSQLite
+    private lateinit var daoConta: ContaSQLite
     private lateinit var transacao: Transacao
     private lateinit var valor: EditText
     private lateinit var descricao: EditText
@@ -42,7 +43,7 @@ class AtualizarTransacaoActivity : AppCompatActivity() {
         setSupportActionBar(toolbar)
         dao = TransacaoSQLite(this)
 
-        val daoConta = ContaSQLite(this)
+        daoConta = ContaSQLite(this)
         contas = daoConta.readContas()
         val spinner = spinnerConta
         val arrayAdapter = ArrayAdapter(this, android.R.layout.simple_spinner_item, contas)
@@ -97,14 +98,39 @@ class AtualizarTransacaoActivity : AppCompatActivity() {
                 t.descricao = descricao
                 t.natureza = natureza
                 t.tipo = tipo
+                t.data = data
+                t.periodos = periodo
+
                 for (c in contas) {
                     if (c.nome == nomeConta) {
                         t.conta = c.codigo
+                        if (transacao.tipo != t.tipo) {
+                            when (t.tipo) {
+                                "Débito" -> {
+                                    c.saldo -= transacao.valor
+                                    c.saldo -= t.valor
+                                }
+                                "Crédito" -> {
+                                    c.saldo += transacao.valor
+                                    c.saldo -= t.valor
+                                }
+                            }
+                        } else {
+                            when (t.tipo) {
+                                "Débito" -> {
+                                    c.saldo += transacao.valor
+                                    c.saldo -= t.valor
+                                }
+                                "Crédito" -> {
+                                    c.saldo -= transacao.valor
+                                    c.saldo += t.valor
+                                }
+                            }
+                        }
+                        daoConta.updateConta(c)
                         break
                     }
                 }
-                t.data = data
-                t.periodos = periodo
 
                 dao.updateTransacao(t)
                 transacoes[transacoes.indexOf(t)] = t
@@ -114,8 +140,17 @@ class AtualizarTransacaoActivity : AppCompatActivity() {
             }
             R.id.deletar -> {
                 // TODO -> precisa atualizar o valor da transação na conta //
+                val conta: Conta = daoConta.readConta(transacao.conta)
                 dao.deleteTransacao(transacao.codigo)
                 transacoes.remove(transacao)
+
+                if (transacao.tipo == "Débito") {
+                    conta.saldo += transacao.valor
+                } else {
+                    conta.saldo -= transacao.valor
+                }
+                daoConta.updateConta(conta)
+
                 TransacaoActivity.adapter.notifyAdapter()
                 Toast.makeText(this, "Transação deletada com sucesso!", Toast.LENGTH_SHORT).show()
                 finish()
