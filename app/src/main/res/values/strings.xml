@@ -18,6 +18,15 @@
     <string name="data">Data:</string>
     <string name="repete">Repete?</string>
     <string name="dias">dias</string>
+    <string name="relatorios">Relatórios</string>
+    <string name="periodo_invalido">Período inserido inválido, tente novamente…</string>
+    <string name="nenhuma_conta">Não há nenhuma conta cadastrada, não é possível gerar relatórios…</string>
+    <string name="por_conta">Por Conta:</string>
+    <string name="periodo">Período:</string>
+    <string name="ate">até</string>
+    <string name="por_natureza">Por Natureza:</string>
+    <string name="gerar_relatorio">Gerar Relatório</string>
+    <string name="por_tipo">Por Tipo:</string>
     <string-array name="natureza">
         <item>Alimentação</item>
         <item>Saúde</item>

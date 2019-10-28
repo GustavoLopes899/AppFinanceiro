@@ -6,7 +6,6 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
-import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -16,7 +15,7 @@ import br.edu.ifsp.scl.projetoappfinanceiro.data.TransacaoAdapter
 import br.edu.ifsp.scl.projetoappfinanceiro.data.TransacaoSQLite
 import kotlinx.android.synthetic.main.toolbar.*
 
-class TransacaoActivity : AppCompatActivity(), View.OnClickListener {
+class TransacaoActivity : AppCompatActivity() {
 
     private lateinit var recyclerView: RecyclerView
     private lateinit var context: Context
@@ -48,10 +47,6 @@ class TransacaoActivity : AppCompatActivity(), View.OnClickListener {
         return super.onCreateOptionsMenu(menu)
     }
 
-    override fun onClick(v: View?) {
-        // TODO
-    }
-
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
             R.id.adicionar -> {
@@ -73,5 +68,4 @@ class TransacaoActivity : AppCompatActivity(), View.OnClickListener {
             }
         }
     }
-
 }

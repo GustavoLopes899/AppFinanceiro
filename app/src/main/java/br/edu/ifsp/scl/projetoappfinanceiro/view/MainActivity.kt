@@ -46,7 +46,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         super.onResume()
         // Atualiza main activity quando retorna a ela de qualquer outra activity
         contas = dao.readContas()
-        total.setText("Saldo Total: " + contas.sumByDouble { it.saldo }.toString())
+        total.text = "Saldo Total: " + contas.sumByDouble { it.saldo }.toString()
 
         // Adiciona valores de saldo de contas
         var values: MutableList<PieEntry> = mutableListOf()

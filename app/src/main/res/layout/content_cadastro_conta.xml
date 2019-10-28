@@ -14,18 +14,19 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="3"
+            android:labelFor="@id/nomeET"
             android:text="@string/nome"
             android:textAlignment="center"
             android:textSize="25sp" />
 
         <EditText
             android:id="@+id/nomeET"
-            android:labelFor="@+id/nomeTV"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="4"
             android:ems="10"
             android:inputType="textPersonName"
+            android:labelFor="@+id/nomeTV"
             android:text="" />
 
     </LinearLayout>
@@ -40,6 +41,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="3"
+            android:labelFor="@id/descricaoET"
             android:text="@string/descricao"
             android:textAlignment="center"
             android:textSize="25sp" />
@@ -66,6 +68,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="3"
+            android:labelFor="@id/saldoET"
             android:text="@string/saldo_inicial"
             android:textAlignment="center"
             android:textSize="25sp" />

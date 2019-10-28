@@ -15,6 +15,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_weight="3"
+            android:labelFor="@id/valorTransacaoET"
             android:text="@string/valor"
             android:textAlignment="center"
             android:textSize="25sp" />
@@ -43,6 +44,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_weight="3"
+            android:labelFor="@id/descricaoTransacaoET"
             android:text="@string/descricao"
             android:textAlignment="center"
             android:textSize="25sp" />
@@ -103,8 +105,8 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_gravity="center"
-            android:entries="@array/tipo"
-            android:layout_weight="4" />
+            android:layout_weight="4"
+            android:entries="@array/tipo" />
     </LinearLayout>
 
     <LinearLayout
@@ -141,6 +143,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_weight="3"
+            android:labelFor="@id/dataTransacaoET"
             android:text="@string/data"
             android:textAlignment="center"
             android:textSize="25sp" />
@@ -151,7 +154,12 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_weight="4"
-            android:inputType="date" />
+            android:clickable="true"
+            android:editable="false"
+            android:focusable="true"
+            android:inputType="none"
+            android:onClick="verificarDataTransacao"
+            android:textAlignment="center" />
     </LinearLayout>
 
     <LinearLayout
@@ -171,6 +179,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_weight="2.5"
+            android:labelFor="@id/periodoTransacaoET"
             android:text="@string/repete"
             android:textAlignment="center"
             android:textSize="25sp" />
