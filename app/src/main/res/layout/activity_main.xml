@@ -34,7 +34,7 @@
 
     <com.github.mikephil.charting.charts.PieChart
         android:id="@+id/saldosPieChart"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="0dp"
         app:layout_constraintDimensionRatio="1"
         app:layout_constraintTop_toBottomOf="@+id/mainPainel"
@@ -74,7 +74,7 @@
     <Button
         android:id="@+id/verContasbtn"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
+        android:layout_height="80dp"
         android:onClick="onClick"
         android:text="Minhas Contas"
         android:textSize="20sp"
@@ -86,7 +86,7 @@
     <Button
         android:id="@+id/verTransacoesbtn"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
+        android:layout_height="80dp"
         android:onClick="onClick"
         android:text="Creditos/Debitos"
         android:textSize="20sp"
@@ -98,7 +98,7 @@
     <Button
         android:id="@+id/verRelatorios"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
+        android:layout_height="80dp"
         android:onClick="onClick"
         android:text="Extratos"
         android:textSize="20sp"
