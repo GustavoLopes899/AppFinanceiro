@@ -15,7 +15,6 @@ import com.github.mikephil.charting.data.PieDataSet
 import com.github.mikephil.charting.data.PieEntry
 import com.github.mikephil.charting.utils.ColorTemplate
 import kotlinx.android.synthetic.main.toolbar.*
-import javax.xml.transform.Templates
 
 class MainActivity : AppCompatActivity(), View.OnClickListener {
     private lateinit var dao: ContaSQLite
@@ -32,8 +31,9 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
 
         // Carrega dados do grafico
         pieChart = findViewById(R.id.saldosPieChart)
-        // Pie Chart valored de configuracao
+        // Pie Chart valores de configuracao
         pieChart.description.isEnabled = false
+        pieChart.legend.isEnabled = false
         pieChart.setExtraOffsets(5f, 10f, 5f, 5f)
         pieChart.dragDecelerationFrictionCoef = 0.95f
         pieChart.isDrawHoleEnabled = true
@@ -58,11 +58,11 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         // Config pie data layout
         pieDataSet.sliceSpace = 3f
         pieDataSet.selectionShift = 5f
+        pieDataSet.setColors(ColorTemplate.MATERIAL_COLORS.toMutableList())
 
         // Add pie data
         var pieData: PieData = PieData(pieDataSet)
         pieData.setValueTextSize(10f)
-        pieData.setValueTextColor(Color.YELLOW)
         // Add data to chart
         pieChart.data = pieData
     }
@@ -76,6 +76,10 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
             R.id.verTransacoesbtn -> {
                 // Botao inicia activity de transacoes
                 startActivity(Intent(this, TransacaoActivity::class.java))
+            }
+            R.id.verRelatorios -> {
+                // Botao inicia activity de Extratos
+                startActivity(Intent(this, RelatorioActivity::class.java))
             }
         }
     }
