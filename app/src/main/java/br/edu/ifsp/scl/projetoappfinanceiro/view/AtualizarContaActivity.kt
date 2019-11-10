@@ -10,6 +10,7 @@ import br.edu.ifsp.scl.projetoappfinanceiro.R
 import br.edu.ifsp.scl.projetoappfinanceiro.data.ContaAdapter.Companion.contas
 import br.edu.ifsp.scl.projetoappfinanceiro.data.ContaSQLite
 import br.edu.ifsp.scl.projetoappfinanceiro.model.Conta
+import br.edu.ifsp.scl.projetoappfinanceiro.utils.Utils
 import kotlinx.android.synthetic.main.content_cadastro_conta.*
 import kotlinx.android.synthetic.main.toolbar.*
 
@@ -36,7 +37,8 @@ class AtualizarContaActivity : AppCompatActivity() {
         nome.setText(conta.nome)
         codigo = conta.codigo
         descricao.setText(conta.descricao)
-        saldo.setText(conta.saldo.toString())
+        //saldo.setText(conta.saldo.toString())
+        saldo.setText(Utils.formataDouble(conta.saldo))
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {

@@ -4,6 +4,7 @@ import android.app.Dialog
 import android.content.Context
 import android.widget.TextView
 import br.edu.ifsp.scl.projetoappfinanceiro.R
+import java.util.*
 
 class Utils {
 
@@ -16,5 +17,10 @@ class Utils {
             dialog.setTitle(R.string.app_name)
             dialog.show()
         }
+
+        fun formataDouble(valor: Double): String {
+            return String.format(Locale.ROOT, "%.2f", valor)
+        }
+
     }
 }

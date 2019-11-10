@@ -16,6 +16,7 @@ import br.edu.ifsp.scl.projetoappfinanceiro.data.TransacaoAdapter.Companion.tran
 import br.edu.ifsp.scl.projetoappfinanceiro.data.TransacaoSQLite
 import br.edu.ifsp.scl.projetoappfinanceiro.model.Conta
 import br.edu.ifsp.scl.projetoappfinanceiro.model.Transacao
+import br.edu.ifsp.scl.projetoappfinanceiro.utils.Utils
 import kotlinx.android.synthetic.main.content_cadastro_transacao.*
 import kotlinx.android.synthetic.main.toolbar.*
 import java.text.SimpleDateFormat
@@ -58,7 +59,7 @@ class AtualizarTransacaoActivity : AppCompatActivity() {
         data = this.findViewById(R.id.dataTransacaoET)
         periodo = this.findViewById(R.id.periodoTransacaoET)
 
-        valor.setText(transacao.valor.toString())
+        valor.setText(Utils.formataDouble(transacao.valor))
         descricao.setText(transacao.descricao)
         natureza.setSelection(resources.getStringArray(R.array.natureza).indexOf(transacao.natureza))
         tipo.setSelection(resources.getStringArray(R.array.tipo).indexOf(transacao.tipo))
