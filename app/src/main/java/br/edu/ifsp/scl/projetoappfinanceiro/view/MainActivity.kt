@@ -13,6 +13,7 @@ import com.github.mikephil.charting.charts.PieChart
 import com.github.mikephil.charting.data.PieData
 import com.github.mikephil.charting.data.PieDataSet
 import com.github.mikephil.charting.data.PieEntry
+import com.github.mikephil.charting.formatter.DefaultValueFormatter
 import com.github.mikephil.charting.utils.ColorTemplate
 import kotlinx.android.synthetic.main.toolbar.*
 
@@ -46,7 +47,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         super.onResume()
         // Atualiza main activity quando retorna a ela de qualquer outra activity
         contas = dao.readContas()
-        total.text = "Saldo Total: " + contas.sumByDouble { it.saldo }.toString()
+        total.text = "Saldo Total: R$ %.2f".format(contas.sumByDouble { it.saldo })
 
         // Adiciona valores de saldo de contas
         var values: MutableList<PieEntry> = mutableListOf()
@@ -63,6 +64,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         // Add pie data
         var pieData: PieData = PieData(pieDataSet)
         pieData.setValueTextSize(10f)
+        pieData.setValueFormatter(DefaultValueFormatter(2))
         // Add data to chart
         pieChart.data = pieData
     }
