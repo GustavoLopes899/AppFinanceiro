@@ -28,7 +28,7 @@
             android:id="@+id/saldoTotalTv"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Saldo Total: R$ 0.00"
+            android:text="@string/saldo_total_0_00"
             android:textSize="30sp"/>
     </androidx.cardview.widget.CardView>
 
@@ -47,7 +47,7 @@
         android:layout_width="match_parent"
         android:layout_height="80dp"
         android:onClick="onClick"
-        android:text="Minhas Contas"
+        android:text="@string/minhas_contas"
         android:textSize="20sp"
         app:layout_constraintTop_toBottomOf="@+id/saldosPieChart"
         app:layout_constraintLeft_toLeftOf="parent"
@@ -59,7 +59,7 @@
         android:layout_width="match_parent"
         android:layout_height="80dp"
         android:onClick="onClick"
-        android:text="Creditos/Debitos"
+        android:text="@string/creditos_debitos"
         android:textSize="20sp"
         app:layout_constraintTop_toBottomOf="@+id/verContasbtn"
         app:layout_constraintLeft_toLeftOf="parent"
@@ -71,7 +71,7 @@
         android:layout_width="match_parent"
         android:layout_height="80dp"
         android:onClick="onClick"
-        android:text="Extratos"
+        android:text="@string/extratos"
         android:textSize="20sp"
         app:layout_constraintTop_toBottomOf="@+id/verTransacoesbtn"
         app:layout_constraintLeft_toLeftOf="parent"

@@ -50,11 +50,11 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         total.text = "Saldo Total: R$ %.2f".format(contas.sumByDouble { it.saldo })
 
         // Adiciona valores de saldo de contas
-        var values: MutableList<PieEntry> = mutableListOf()
+        val values: MutableList<PieEntry> = mutableListOf()
         contas.forEach {
             values.add(PieEntry(it.saldo.toFloat(), it.nome))
         }
-        var pieDataSet: PieDataSet = PieDataSet(values, "Saldos")
+        val pieDataSet: PieDataSet = PieDataSet(values, "Saldos")
 
         // Config pie data layout
         pieDataSet.sliceSpace = 3f
@@ -62,7 +62,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         pieDataSet.setColors(ColorTemplate.MATERIAL_COLORS.toMutableList())
 
         // Add pie data
-        var pieData: PieData = PieData(pieDataSet)
+        val pieData: PieData = PieData(pieDataSet)
         pieData.setValueTextSize(10f)
         pieData.setValueFormatter(DefaultValueFormatter(2))
         // Add data to chart
