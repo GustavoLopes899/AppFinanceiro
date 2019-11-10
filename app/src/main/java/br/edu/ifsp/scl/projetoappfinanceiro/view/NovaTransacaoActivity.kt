@@ -105,6 +105,17 @@ class NovaTransacaoActivity : AppCompatActivity() {
                         dataNova = calendario.time
                         val formataData = SimpleDateFormat("dd/MM/yyy")
                         novaTransacao.data = formataData.format(dataNova)
+                        for (c in contas) {
+                            if (c.nome == nomeConta) {
+                                conta = c.codigo
+                                when (tipo) {
+                                    "Débito" -> c.saldo -= valor
+                                    "Crédito" -> c.saldo += valor
+                                }
+                                daoConta.updateConta(c)
+                                break
+                            }
+                        }
                         dao.createTransacao(novaTransacao)
                         TransacaoAdapter.transacoes.add(novaTransacao)
                     }
