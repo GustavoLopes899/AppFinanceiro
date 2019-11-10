@@ -28,6 +28,7 @@
     <string name="gerar_relatorio">Gerar Relatório</string>
     <string name="por_tipo">Por Tipo:</string>
     <string name="grafico">Grafico</string>
+    <string name="a_cada">a cada</string>
     <string-array name="natureza">
         <item>Alimentação</item>
         <item>Saúde</item>

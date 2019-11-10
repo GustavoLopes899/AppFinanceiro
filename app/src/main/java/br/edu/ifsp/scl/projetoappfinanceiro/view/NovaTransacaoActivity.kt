@@ -61,6 +61,13 @@ class NovaTransacaoActivity : AppCompatActivity() {
                     Toast.makeText(this, "A data da transação não pode estar vazio", Toast.LENGTH_SHORT).show()
                     return false
                 }
+                val repete: Boolean = repeteCB.isChecked
+                val vezes: Int = vezesTransacaoET.text.toString().toInt()
+                val periodo: Int = periodoTransacaoET.text.toString().toInt()
+                if (repete && periodo <= 0) {
+                    Toast.makeText(this, "O período de repetição da transação é inválido", Toast.LENGTH_SHORT).show()
+                    return false
+                }
                 var conta = 0
 
                 for (c in contas) {
@@ -87,6 +94,22 @@ class NovaTransacaoActivity : AppCompatActivity() {
                 dao.createTransacao(t)
                 TransacaoAdapter.transacoes.add(t)
                 TransacaoActivity.adapter.notifyAdapter()
+
+                if (repete) {
+                    val calendario: Calendar = Calendar.getInstance()
+                    var dataNova: Date? = SimpleDateFormat("dd/MM/yyyy", Locale.US).parse(data)
+                    for (i in 1..vezes) {
+                        val novaTransacao = t.copy()
+                        calendario.time = dataNova
+                        calendario.add(Calendar.DATE, periodo)
+                        dataNova = calendario.time
+                        val formataData = SimpleDateFormat("dd/MM/yyy")
+                        novaTransacao.data = formataData.format(dataNova)
+                        dao.createTransacao(novaTransacao)
+                        TransacaoAdapter.transacoes.add(novaTransacao)
+                    }
+                    TransacaoActivity.adapter.notifyAdapter()
+                }
 
                 Toast.makeText(this, "Transação salva com sucesso!", Toast.LENGTH_SHORT).show()
                 setResult(RESULT_OK)
